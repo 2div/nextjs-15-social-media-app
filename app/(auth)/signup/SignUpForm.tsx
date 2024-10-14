@@ -8,6 +8,9 @@ import {zodResolver} from '@hookform/resolvers/zod'
 import { useState, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { signUp } from './actions'
+import { PasswordInput } from '@/components/ui/PasswordInput'
+import LoadingButton from '@/components/LoadingButton'
+import { Pen } from 'lucide-react'
 
 function SignUpForm() {
 
@@ -69,15 +72,15 @@ function SignUpForm() {
             <FormItem >
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="Password" type='password' {...field} />
+                <PasswordInput placeholder="Password" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type='submit'className='w-full'>
+        <LoadingButton type='submit' className='w-full' loading={isPending}>
           Create account
-        </Button>
+        </LoadingButton>
       </form>
       
     </Form>
